@@ -1,0 +1,21 @@
+{__warning_header}
+'use strict';
+<%
+    const namespaces        = Object.keys(entities).map( namespace => `NAMESPACE_${namespace.toUpperCase()}`).join(',\n    ');
+    const exportNamespaces  = Object.keys(entities).map( namespace => `export const NAMESPACE_${namespace.toUpperCase()} = '${namespace}';`).join('\n');
+    const types             = mapEntity(entities, entity => `export const ${entity.TYPE} = '${entity.TYPE}';`).join('\n');
+%>
+
+// Statuses
+export const STATUS_PROCESS = 'STATUS_PROCESS';
+export const STATUS_SUCCESS = 'STATUS_SUCCESS';
+export const STATUS_FAILURE = 'STATUS_FAILURE';
+
+// Generated Namespaces
+{exportNamespaces}
+
+export const NAMESPACES = [
+    {namespaces}
+];
+// Generated Types
+{types}
