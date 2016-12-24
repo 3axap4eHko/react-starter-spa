@@ -1,19 +1,23 @@
 // Karma configuration
 // Generated on Wed Jun 08 2016 10:55:54 GMT-0400 (Eastern Daylight Time)
 
-const webpack = require('webpack');
+require('webpack');
+const Os = require('os');
+const Path = require('path');
+
 const webpackConfig = require('./webpack.config');
+const tempDir = Path.join(Os.tmpdir(), `chrome-test`) ;
 
 //process.env.CHROME_BIN = process.env.CHROME_BIN || 'c:\\bin\\chrome-win32\\chrome.exe';
 //process.env.PHANTOMJS_BIN = process.env.PHANTOMJS_BIN || 'c:\\bin\\phantomjs\\bin\\phantomjs.exe';
 
 module.exports = function (config) {
     config.set({
-        browsers: ['Chromium'],
+        browsers: ['ChromeLauncher'],
         customLaunchers: {
-            Chromium: {
+            ChromeLauncher: {
                 base: 'Chrome',
-                flags: ['--no-proxy-server', '--start-maximized', '-incognito']
+                flags: ['--start-maximized', '-incognito', `--user-data-dir=${tempDir}`]
             },
         },
         frameworks: ['jasmine'],

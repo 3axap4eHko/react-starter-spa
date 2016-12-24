@@ -1,8 +1,9 @@
 module.exports = {
     plugins: [
         require('postcss-import')(),
+        require('postcss-url')(),
         require('postcss-cssnext')(),
-        // require('precss')({ /* ...options */ }),
-        // require('autoprefixer')({ /* ...options */ })
+        require('postcss-reporter')(),
+        require('precss')()
     ]
 };

@@ -1,14 +1,12 @@
 {__warning_header}
 'use strict';
 
-import { fromJS } from 'immutable';
-
 <%
     const importStates = Object.keys(entities).map( namespace => `import ${namespace} from './${getFolderName(namespace)}';` ).join('\n');
     const exportStates = Object.keys(entities).join(',\n    ');
 %>
 {importStates}
 
-export default fromJS({
+export default {
     {exportStates}
-});
+};
