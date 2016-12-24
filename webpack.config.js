@@ -27,7 +27,10 @@ module.exports = {
         ],
         loaders: [
             { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
-            { test: /\.css$/, loader: ExtractPostCss.extract(['css-loader', 'postcss-loader']) }
+            { test: /\.css$/, loader: ExtractPostCss.extract(['css-loader', 'postcss-loader']) },
+            { test: /\.(svg|jpg|png|gif)$/, loader: 'file-loader', query: { name: 'images/[hash].[ext]' } },
+            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader', query: { name: 'fonts/[hash].[ext]', limit: 5000, mimetype: 'application/font-woff' } },
+            { test: /\.ttf$|\.eot$/, loader: 'file-loader', query: { name: 'fonts/[hash].[ext]' } }
         ],
     },
     resolve: {
@@ -54,7 +57,8 @@ module.exports = {
             template: 'src/index.html'
         }),
         new Copy([
-            {from: './src/vendor/', to: './vendor'}
+            {from: './src/favicon.ico', to: './'},
+            {from: './src/vendor/', to: './vendor'},
         ])
     ]
 };
