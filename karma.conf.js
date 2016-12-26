@@ -1,5 +1,3 @@
-// Karma configuration
-// Generated on Wed Jun 08 2016 10:55:54 GMT-0400 (Eastern Daylight Time)
 
 require('webpack');
 const Os = require('os');
@@ -7,7 +5,7 @@ const Path = require('path');
 
 const webpackConfig = require('./webpack.config');
 const tempDir = Path.join(Os.tmpdir(), `chrome-test`) ;
-const isTravis = !!process.env.TRAVIS || true;
+const isTravis = !!process.env.TRAVIS;
 const singleRun = isTravis;
 const autoWatch = !isTravis;
 

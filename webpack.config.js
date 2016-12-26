@@ -11,6 +11,7 @@ module.exports = {
     devServer: {
         quiet: false,
         stats: {colors: true},
+        port: 9090
     },
     entry: {
         'index' : Path.resolve(__dirname, './src/app/index.jsx')

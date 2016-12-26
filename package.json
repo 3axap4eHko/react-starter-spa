@@ -1,17 +1,23 @@
 {
-  "name": "react-spa-starter",
+  "name": "react-starter-spa",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "React Redux Starter SPA",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3axap4eHko/react-starter-spa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/3axap4eHko/react-starter-spa/issues"
+  },
+  "homepage": "https://github.com/3axap4eHko/react-starter-spa#readme",
   "scripts": {
-    "install": "",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --port 9090",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js",
     "test": "cross-env NODE_ENV=test karma start karma.conf.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "3axap4eHko",
+  "license": "MIT",
   "dependencies": {
     "immutable": "^3.8.1",
     "react": "^15.4.1",
