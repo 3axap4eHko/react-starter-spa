@@ -13,8 +13,7 @@ module.exports = {
         stats: {colors: true},
     },
     entry: {
-        'index' : Path.resolve(__dirname, './src/app/index.jsx'),
-        'common': ['react', 'react-dom', 'react-router', 'redux', 'react-redux', 'immutable', 'react-snippets', 'reselect', 'react-intl', 'redux-thunk']
+        'index' : Path.resolve(__dirname, './src/app/index.jsx')
     },
     output: {
         path: Path.join(__dirname, 'build'),
@@ -43,11 +42,9 @@ module.exports = {
                 'NODE_ENV': JSON.stringify('development')
             }
         }),
-        new optimize.DedupePlugin(),
-        new optimize.OccurenceOrderPlugin(),
-        new optimize.CommonsChunkPlugin('common', 'js/common.js'),
         ExtractPostCss,
         new Offline({
+            externals: ['/'],
             ServiceWorker: {
                 output: 'js/sw.js',
             }

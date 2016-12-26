@@ -1,4 +1,6 @@
-# React Redux SPA Starter Kit
+# React Redux Starter SPA
+
+[![build status](https://travis-ci.org/3axap4eHko/react-starter-spa.svg?branch=master)](https://travis-ci.org/3axap4eHko/react-starter-spa)
 
 ## Installation
 

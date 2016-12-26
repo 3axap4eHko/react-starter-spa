@@ -2,27 +2,29 @@
 
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import If from 'react-snippets/If';
-import {appLoad} from '../redux/actions';
-import Starter from '../composers/Starter';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
 const {any} = PropTypes;
 
+import '../css/global.css';
 import './App.css';
 
 class App extends Component {
     static propTypes = {
         children: any
     };
-    readyRender = () => this.props.children;
-    waitingRender = () => <Starter/>;
+
     render() {
         const {children} = this.props;
-        return <div>
-            <If is={!!children}
-                render={this.readyRender}
-                elseRender={this.waitingRender}
-            />
-        </div>;
+        return (
+            <div className="site-wrapper-inner">
+                <div className="cover-container">
+                    <Nav />
+                    {children}
+                    <Footer />
+                </div>
+            </div>
+        );
     }
 }
 
@@ -30,8 +32,6 @@ function mapStateToProps() {
     return {};
 }
 
-const mapDispatchToProps = {
-    appLoad
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

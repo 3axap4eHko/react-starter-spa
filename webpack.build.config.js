@@ -50,6 +50,7 @@ module.exports = {
         }),
         ExtractPostCss,
         new Offline({
+            externals: ['/'],
             ServiceWorker: {
                 output: 'js/sw.js',
             }
