@@ -9,7 +9,7 @@ const Offline = require('offline-plugin');
 module.exports = {
     entry: {
         'index' : Path.resolve(__dirname, './src/app/index.jsx'),
-        'common': ['react', 'react-dom', 'react-router', 'redux', 'react-redux', 'immutable', 'react-snippets', 'reselect', 'react-intl', 'redux-thunk']
+        'common': ['react', 'react-dom', 'react-router', 'redux', 'react-redux', 'immutable', 'react-helpful', 'reselect', 'react-intl', 'redux-thunk']
     },
     output: {
         path: Path.join(__dirname, 'build'),
@@ -33,7 +33,8 @@ module.exports = {
     },
     plugins: [
         new DefinePlugin({
-            '__DEV__': false,
+            '__DEV__': JSON.stringify(false),
+            'DEBUG': JSON.stringify(false),
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }

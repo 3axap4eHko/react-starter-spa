@@ -38,7 +38,8 @@ module.exports = {
     },
     plugins: [
         new DefinePlugin({
-            '__DEV__': true,
+            '__DEV__': JSON.stringify(true),
+            'DEBUG': JSON.stringify(true),
             'process.env': {
                 'NODE_ENV': JSON.stringify('development')
             }
