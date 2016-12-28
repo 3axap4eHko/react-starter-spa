@@ -22,7 +22,7 @@
     "immutable": "^3.8.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-helpful": "^1.0.4",
+    "react-helpful": "^1.0.5",
     "react-intl": "^2.1.5",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
