@@ -29,3 +29,6 @@ npm run test
 ```
 see `spec` directory
 
+## License
+
+The MIT License Copyright (c) 2016-present Ivan Zakharchenko

@@ -3,8 +3,8 @@ require('webpack');
 const Os = require('os');
 const Path = require('path');
 
-const webpackConfig = require('./webpack.config');
-const tempDir = Path.join(Os.tmpdir(), `chrome-test`) ;
+const webpackConfig = require('./webpack.dev.config');
+const tempDir = Path.join(Os.tmpdir(), '.karma_test_directory') ;
 const isTravis = !!process.env.TRAVIS;
 const singleRun = isTravis;
 const autoWatch = !isTravis;
