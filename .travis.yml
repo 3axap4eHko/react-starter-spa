@@ -3,6 +3,9 @@ dist: trusty
 language: node_js
 node_js:
   - "6"
+notifications:
+  on_success: never
+  on_failure: always
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
