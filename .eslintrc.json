@@ -9,6 +9,12 @@
     "es6": true,
     "jasmine": true
   },
+  "globals": {
+    "NODE_ENV": false,
+    "__DEV__": false,
+    "DEBUG": false,
+    "process": false
+  },
   "plugins": [
     "react"
   ],
