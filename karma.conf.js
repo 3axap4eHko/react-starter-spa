@@ -1,9 +1,6 @@
 require('webpack');
-const Os = require('os');
-const Path = require('path');
 
 const webpackConfig = require('./webpack/webpack.dev.config');
-const tempDir = Path.join(Os.tmpdir(), '.karma_test_directory');
 const isTravis = !!process.env.TRAVIS;
 const singleRun = isTravis;
 const autoWatch = !isTravis;
@@ -13,16 +10,12 @@ const autoWatch = !isTravis;
 
 module.exports = function (config) {
   config.set({
-    browsers: [isTravis ? 'ChromeLauncherTravis' : 'ChromeLauncher'],
+    browsers: ['ChromeLauncher'],
     customLaunchers: {
       ChromeLauncher: {
         base: 'Chrome',
-        flags: ['--start-maximized', `--user-data-dir=${tempDir}`]
-      },
-      ChromeLauncherTravis: {
-        base: 'Chrome',
-        flags: ['--no-sandbox', '--start-maximized', `--user-data-dir=${tempDir}`]
-      },
+        flags: ['--incognito', '--no-sandbox']
+      }
     },
     frameworks: ['mocha'],
     files: [
@@ -33,11 +26,16 @@ module.exports = function (config) {
     },
     webpack: webpackConfig,
     webpackMiddleware: {
-      //noInfo: true
+      noInfo: true
     },
     colors: true,
     retryLimit: 10,
     concurrency: Infinity,
+    reporters: ['mocha', 'coverage'],
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
     autoWatch,
     singleRun,
   })
