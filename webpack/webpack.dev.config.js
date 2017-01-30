@@ -17,7 +17,7 @@ module.exports = {
     'index': Path.resolve(__dirname, '../src/app/index.jsx')
   },
   output: {
-    path: Path.join(__dirname, 'build'),
+    path: Path.join(__dirname, '../build'),
     filename: '/js/[name].js',
     chunkFilename: '/js/[id].js'
   },
