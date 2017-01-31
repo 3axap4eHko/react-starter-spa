@@ -39,7 +39,7 @@ module.exports = {
   },
   plugins: [
     new WebpackPlugin({
-      clean: ['build', 'cache']
+      clean: ['build', 'cache', 'coverage']
     }),
     new DefinePlugin({
       '__DEV__': JSON.stringify(true),

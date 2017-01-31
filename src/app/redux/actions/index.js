@@ -7,12 +7,12 @@ import {
   // Namespaces
   NAMESPACE_APP,
   // Types
-  APP_RESET,
   APP_LOAD,
+  APP_RESET,
 } from './../types';
 
-import appResetAction from './app/reset';
 import appLoadAction from './app/load';
+import appResetAction from './app/reset';
 
 function _createProcess(namespace, type, ...args) { // eslint-disable-line no-underscore-dangle
   return {
@@ -50,15 +50,15 @@ function _createAction(namespace, type, action) { // eslint-disable-line no-unde
 }
 
 
-export const appReset = _createAction(
-  NAMESPACE_APP,
-  APP_RESET,
-  appResetAction,
-);
-
 export const appLoad = _createAction(
   NAMESPACE_APP,
   APP_LOAD,
   appLoadAction,
+);
+
+export const appReset = _createAction(
+  NAMESPACE_APP,
+  APP_RESET,
+  appResetAction,
 );
 

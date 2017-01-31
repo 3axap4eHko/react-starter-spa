@@ -12,5 +12,5 @@ export const NAMESPACES = [
   NAMESPACE_APP,
 ];
 // Generated Types
-export const APP_RESET = 'APP_RESET';
 export const APP_LOAD = 'APP_LOAD';
+export const APP_RESET = 'APP_RESET';

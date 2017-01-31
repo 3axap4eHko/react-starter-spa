@@ -1,17 +1,13 @@
-'use strict';
-
-import React, {Component} from 'react';
+import React from 'react';
 import Cargo from './Cargo.svg';
 
-class Home extends Component {
-    render() {
-        return (
-            <div className="inner cover">
-                <h1 className="cover-heading">Create your application faster.</h1>
-                <img src={Cargo} />
-            </div>
-        );
-    }
+function Home() {
+  return (
+    <div className="inner cover">
+      <h1 className="cover-heading">Create your application faster.</h1>
+      <img src={Cargo} alt="React Starter SPA" />
+    </div>
+  );
 }
 
 export default Home;

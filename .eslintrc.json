@@ -23,7 +23,5 @@
     }
   },
   "rules": {
-    "no-debugger": 2,
-    "linebreak-style": 0
   }
 }
