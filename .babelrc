@@ -3,13 +3,15 @@
     ["env",{
       "targets": {
         "browsers": ["chrome >= 55", "ff >= 51"]
-      }
+      },
+      "modules": false
     }],
     "react"
   ],
   "plugins": [
     "transform-object-rest-spread",
     "transform-class-properties",
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    ["transform-runtime", { "helpers": false, "polyfill": false }]
   ]
 }

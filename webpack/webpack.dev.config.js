@@ -1,25 +1,28 @@
 const Path = require('path');
-const {DefinePlugin} = require('webpack');
+const {DefinePlugin, HotModuleReplacementPlugin, NamedModulesPlugin} = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ExtractPostCss = new ExtractTextPlugin('/css/[name].css');
+const ExtractPostCss = new ExtractTextPlugin('css/[name].css');
 const Html = require('html-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const WebpackPlugin = require('./webpack.plugin');
 
 module.exports = {
-  devtool: 'source-map',
   devServer: {
+    hot: true,
     quiet: false,
-    stats: {colors: true},
-    port: 9090
+    port: 9090,
+    stats: 'errors-only'
   },
-  entry: {
-    'index': Path.resolve(__dirname, '../src/app/index.jsx')
-  },
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client',
+    'webpack/hot/only-dev-server',
+    Path.resolve(__dirname, 'webpack.hot-reload.jsx')
+  ],
   output: {
     path: Path.join(__dirname, '../build'),
-    filename: '/js/[name].js',
-    chunkFilename: '/js/[id].js'
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[id].js'
   },
   module: {
     rules: [
@@ -53,6 +56,8 @@ module.exports = {
     new Copy([
       {from: './src/favicon.ico', to: './'},
       {from: './src/vendor/', to: './vendor'},
-    ])
+    ]),
+    new HotModuleReplacementPlugin(),
+    new NamedModulesPlugin()
   ]
 };

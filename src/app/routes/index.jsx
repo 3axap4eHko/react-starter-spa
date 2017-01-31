@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import AppContainer from '../containers/App';

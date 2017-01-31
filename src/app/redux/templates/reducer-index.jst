@@ -1,33 +1,31 @@
 {__warning_header}
-'use strict';
-
 import { is } from 'immutable';
 <%
-    const reducers = {};
-    eachEntity(entities, entity => reducers[entity.namespace] = relative(config.reducersPath, entity.reducerPath) );
+  const reducers = {};
+  eachEntity(entities, entity => reducers[entity.namespace] = relative(config.reducersPath, entity.reducerPath) );
 
-    const importReducers = Object.keys(reducers).map( namespace => `import ${namespace} from './${reducers[namespace]}';` ).join('\n');
-    const mappedReducers = Object.keys(reducers).join(',\n    ');
-    const statePath      = relative(config.reducersPath, config.statesPath);
+  const importReducers = Object.keys(reducers).map( namespace => `import ${namespace} from './${noExt(reducers[namespace])}';` ).join('\n');
+  const mappedReducers = Object.keys(reducers).join(',\n  ');
+  const statePath      = relative(config.reducersPath, config.statesPath);
 %>
 {importReducers}
 import defaultState from './{statePath}';
 
 const namespaceReducersMap = {
-    {mappedReducers}
+  {mappedReducers},
 };
 
-export default function(state = defaultState, action) {
-    const { namespace } = action;
-    if ( namespace in namespaceReducersMap ) {
-        const prevNamespaceState = state[namespace];
-        const nextNamespaceState = namespaceReducersMap[namespace](prevNamespaceState, action);
-        if (typeof nextNamespaceState === 'undefined') {
-            throw new Error(`State from reducer '${<%  %>namespace}' cannot be undefined`);
-        }
-        if ( !is(prevNamespaceState, nextNamespaceState) ) {
-            return { ...state, [namespace]: nextNamespaceState };
-        }
+export default function (state = defaultState, action) {
+  const { namespace } = action;
+  if (namespace in namespaceReducersMap) {
+    const prevNamespaceState = state[namespace];
+    const nextNamespaceState = namespaceReducersMap[namespace](prevNamespaceState, action);
+    if (typeof nextNamespaceState === 'undefined') {
+      throw new Error(`State from reducer '${<%  %>namespace}' cannot be undefined`);
     }
-    return state;
+    if (!is(prevNamespaceState, nextNamespaceState)) {
+      return { ...state, [namespace]: nextNamespaceState };
+    }
+  }
+  return state;
 }
