@@ -14,7 +14,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --inline --config webpack/webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",
     "test": "cross-env NODE_ENV=production karma start karma.conf.js",
-    "lint": "eslint src/app/"
+    "lint": "eslint src/app/",
+    "precommit": "echo pre commit hooks"
   },
   "keywords": [],
   "author": "Ivan Zakharchenko <3axap4eHko@gmail.com>",
@@ -42,20 +43,21 @@
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-env": "^1.1.8",
     "babel-preset-react": "^6.22.0",
-    "babili-webpack-plugin": "^0.0.9",
+    "babili-webpack-plugin": "^0.0.10",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "del": "^2.2.2",
-    "eslint": "3.13.0",
+    "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "3.0.2",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "6.9.0",
     "extract-text-webpack-plugin": "beta",
     "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.28.0",
+    "husky": "^0.13.1",
     "json-loader": "^0.5.4",
     "karma": "^1.4.1",
     "karma-chrome-launcher": "^2.0.0",
@@ -79,6 +81,6 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "2.2.1"
+    "webpack-dev-server": "^2.3.0"
   }
 }
