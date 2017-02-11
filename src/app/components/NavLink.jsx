@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 
 const { object, string, oneOfType, node } = PropTypes;
 
-function NavLink(props) {
+function NavLink(props, context) {
   const { to, children, ...linkProps } = props;
-  const { router } = this.context;
+  const { router } = context;
   const isActive = router.isActive(to, true);
   return (
     <li className={isActive && 'active'}>
@@ -17,6 +17,10 @@ function NavLink(props) {
 NavLink.propTypes = {
   to: oneOfType([string, object]).isRequired,
   children: node.isRequired,
+};
+
+NavLink.contextTypes = {
+  router: object.isRequired,
 };
 
 export default NavLink;
