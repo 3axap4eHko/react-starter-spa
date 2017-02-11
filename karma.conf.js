@@ -19,10 +19,10 @@ module.exports = function (config) {
     },
     frameworks: ['mocha'],
     files: [
-      './test/*.js'
+      './test/*.jsx'
     ],
     preprocessors: {
-      './test/*.js': ['webpack', 'sourcemap']
+      './test/*.jsx': ['webpack', 'sourcemap']
     },
     webpack: webpackConfig,
     webpackMiddleware: {

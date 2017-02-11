@@ -14,8 +14,9 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --inline --config webpack/webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",
     "test": "cross-env NODE_ENV=production karma start karma.conf.js",
-    "lint": "eslint src/ webpack/webpack.hot-reload.jsx --ext .js,.jsx --fix",
-    "precommit": "echo pre commit hooks"
+    "lint": "eslint src/ test/ webpack/webpack.hot-reload.jsx --ext .js,.jsx",
+    "lint:fix": "eslint src/ test/ webpack/webpack.hot-reload.jsx --ext .js,.jsx --fix",
+    "precommit": "yarn lint"
   },
   "keywords": [],
   "author": "Ivan Zakharchenko <3axap4eHko@gmail.com>",
