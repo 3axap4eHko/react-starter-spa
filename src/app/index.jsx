@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import offline from 'offline-plugin/runtime';
 import { Router, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
+import offline from 'offline-plugin/runtime';
 
 import store from './redux/store';
 import routes from './routes';
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   offline.install();
 }
 

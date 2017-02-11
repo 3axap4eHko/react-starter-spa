@@ -7,6 +7,7 @@ const Copy = require('copy-webpack-plugin');
 const WebpackPlugin = require('./webpack.plugin');
 
 module.exports = {
+  devtool: 'inline-source-map',
   devServer: {
     hot: true,
     quiet: false,
@@ -15,7 +16,7 @@ module.exports = {
   },
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client',
+    'webpack-dev-server/client?http://localhost:9090',
     'webpack/hot/only-dev-server',
     Path.resolve(__dirname, 'webpack.hot-reload.jsx')
   ],
