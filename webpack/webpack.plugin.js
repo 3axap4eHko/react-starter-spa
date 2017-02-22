@@ -1,5 +1,3 @@
-'use strict';
-
 const Del = require('del');
 
 function WebpackPlugin(options) {

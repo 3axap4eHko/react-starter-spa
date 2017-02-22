@@ -9,9 +9,9 @@
     "react"
   ],
   "plugins": [
+    "react-hot-loader/babel",
     "transform-object-rest-spread",
     "transform-class-properties",
-    "react-hot-loader/babel",
     ["transform-runtime", { "helpers": false, "polyfill": false }]
   ]
 }
