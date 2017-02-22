@@ -1,6 +1,6 @@
 require('webpack');
 
-const webpackConfig = require('./webpack/webpack.dev.config');
+const webpackConfig = require('./webpack/development.config');
 const isTravis = !!process.env.TRAVIS;
 const singleRun = isTravis;
 const autoWatch = !isTravis;
