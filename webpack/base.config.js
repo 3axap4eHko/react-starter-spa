@@ -1,5 +1,5 @@
 const Path = require('path');
-const {DefinePlugin} = require('webpack');
+const { DefinePlugin } = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ExtractPostCss = new ExtractTextPlugin('css/[name].css');
 const Html = require('html-webpack-plugin');
@@ -14,12 +14,13 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: 'pre'},
-      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader', options: {cacheDirectory: 'cache'}},
-      {test: /\.css$/, loader: ExtractPostCss.extract(['css-loader', 'postcss-loader'])},
-      {test: /\.(svg|jpg|png|gif)$/, loader: 'file-loader', options: {name: 'images/[name].[ext]'}},
-      {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader', options: {name: 'fonts/[name].[ext]', limit: 5000, mimetype: 'application/font-woff'}},
-      {test: /\.ttf$|\.eot$/, loader: 'file-loader', options: {name: 'fonts/[name].[ext]'}}
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: 'pre' },
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader', options: { cacheDirectory: 'cache' } },
+      { test: /\.css$/, loader: ExtractPostCss.extract(['css-loader', 'postcss-loader']) },
+      { test: /\.(svg|jpg|png|gif)$/, loader: 'file-loader', options: { name: 'images/[name].[ext]' } },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader', options: { name: 'fonts/[name].[ext]', limit: 5000, mimetype: 'application/font-woff' }
+      },
+      { test: /\.ttf$|\.eot$/, loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } }
     ],
   },
   resolve: {
@@ -41,8 +42,8 @@ module.exports = {
       template: 'src/index.html'
     }),
     new Copy([
-      {from: './src/favicon.ico', to: './'},
-      {from: './src/vendor/', to: './vendor'},
+      { from: './src/favicon.ico', to: './' },
+      { from: './src/vendor/', to: './vendor' },
     ])
   ]
 };
