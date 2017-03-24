@@ -1,6 +1,6 @@
 const webpackMerge = require('webpack-merge');
 const Path = require('path');
-const {optimize, HashedModuleIdsPlugin} = require('webpack');
+const { optimize, HashedModuleIdsPlugin } = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
 const Offline = require('offline-plugin');
 

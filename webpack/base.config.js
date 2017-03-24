@@ -46,7 +46,6 @@ module.exports = {
     }),
     new Copy([
       { from: './src/favicon.ico', to: './' },
-      { from: './src/vendor/', to: './vendor' },
     ])
   ]
 };

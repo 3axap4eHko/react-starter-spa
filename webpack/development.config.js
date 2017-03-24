@@ -1,6 +1,6 @@
 const webpackMerge = require('webpack-merge');
 const Path = require('path');
-const {HotModuleReplacementPlugin, NamedModulesPlugin} = require('webpack');
+const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 
 const baseConfig = require('./base.config');
 
@@ -16,7 +16,7 @@ module.exports = webpackMerge(baseConfig, {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:9090',
     'webpack/hot/only-dev-server',
-    Path.resolve(__dirname, 'webpack.hot-reload.jsx')
+    Path.resolve(__dirname, '../src/app/dev.jsx'),
   ],
   plugins: [
     new HotModuleReplacementPlugin(),

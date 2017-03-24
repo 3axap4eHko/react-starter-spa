@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer as Hot } from 'react-hot-loader'; // eslint-disable-line  import/no-extraneous-dependencies
 
-import Root from '../src/app';
+import Root from './index';
 
-const path = '../src/app';
+const path = './';
 const render = () => {
   ReactDOM.render(<Hot><Root /></Hot>, document.getElementById('app'));
 };
