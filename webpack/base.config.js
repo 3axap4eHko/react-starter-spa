@@ -16,9 +16,12 @@ module.exports = {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: 'pre' },
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader', options: { cacheDirectory: 'cache' } },
-      { test: /\.css$/, loader: ExtractPostCss.extract(['css-loader', 'postcss-loader']) },
+      { test: /\.css$/, loader: ExtractPostCss.extract({ use: ['css-loader', 'postcss-loader'], publicPath: '/' }) },
       { test: /\.(svg|jpg|png|gif)$/, loader: 'file-loader', options: { name: 'images/[name].[ext]' } },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader', options: { name: 'fonts/[name].[ext]', limit: 5000, mimetype: 'application/font-woff' }
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader',
+        options: { name: 'fonts/[name].[ext]', limit: 5000, mimetype: 'application/font-woff' }
       },
       { test: /\.ttf$|\.eot$/, loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } }
     ],

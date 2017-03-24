@@ -2,6 +2,17 @@
 
 [![build status](https://travis-ci.org/3axap4eHko/react-starter-spa.svg?branch=master)](https://travis-ci.org/3axap4eHko/react-starter-spa)
 
+## Features
+ - React JS 15
+ - React Router 4
+ - React Hot Loader 3
+ - Redux 3
+ - Offline plugin
+ - Webpack 2
+ - PostCSS (CSS Next, PreCSS)
+ - Test coverage
+ - Karma / Mocha tests
+
 ## Installation
 
 ``` bash

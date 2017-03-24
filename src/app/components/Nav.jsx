@@ -9,7 +9,7 @@ function Nav() {
         <nav>
           <ul className="nav masthead-nav">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="about">About</NavLink>
+            <NavLink to="/about">About</NavLink>
           </ul>
         </nav>
       </div>

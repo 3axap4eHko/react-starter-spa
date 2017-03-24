@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, hashHistory } from 'react-router';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import offline from 'offline-plugin/runtime';
+import AppContainer from './containers/App';
 
 import store from './redux/store';
-import routes from './routes';
 
 if (process.env.NODE_ENV === 'production') {
   offline.install();
@@ -15,7 +15,9 @@ if (process.env.NODE_ENV === 'production') {
 const Root = () => (
   <IntlProvider locale="en">
     <Provider store={store}>
-      <Router history={hashHistory} routes={routes} />
+      <Router>
+        <Route path="/" component={AppContainer} />
+      </Router>
     </Provider>
   </IntlProvider>
 );

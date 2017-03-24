@@ -1,26 +1,23 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+/* eslint-disable */
 
-const { object, string, oneOfType, node } = PropTypes;
+import React from 'react'
+import { Route } from 'react-router'
+import { Link } from 'react-router-dom'
 
-function NavLink(props, context) {
-  const { to, children, ...linkProps } = props;
-  const { router } = context;
-  const isActive = router.isActive(to, true);
-  return (
-    <li className={isActive && 'active'}>
-      <Link to={to} {...linkProps}>{children}</Link>
-    </li>
-  );
-}
+const NavLink = ({ to, ...rest }) => (
+  <Route
+    path={typeof to === 'object' ? to.pathname : to}
+    exact={true}
+    strict={false}
+    children={({ location, match }) => (
+      <li className={match && 'active'}>
+        <Link
+          to={to}
+          {...rest}
+        />
+      </li>
+    )}
+  />
+);
 
-NavLink.propTypes = {
-  to: oneOfType([string, object]).isRequired,
-  children: node.isRequired,
-};
-
-NavLink.contextTypes = {
-  router: object.isRequired,
-};
-
-export default NavLink;
+export default NavLink

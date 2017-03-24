@@ -1,5 +1,6 @@
 {__warning_header}
 import { is } from 'immutable';
+import { routerReducer as router } from 'react-router-redux';
 <%
   const reducers = {};
   eachEntity(entities, entity => reducers[entity.namespace] = relative(config.reducersPath, entity.reducerPath) );
@@ -13,6 +14,7 @@ import defaultState from './{statePath}';
 
 const namespaceReducersMap = {
   {mappedReducers},
+  router,
 };
 
 export default function (state = defaultState, action) {

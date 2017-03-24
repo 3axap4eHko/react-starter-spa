@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createHashHistory';
 import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import reducers from './reducers';
 
 const loggerMiddleware = createLogger({
@@ -13,12 +15,18 @@ const loggerMiddleware = createLogger({
   collapsed: true,
 });
 
+export const history = createHistory();
+
 const middleware = [
   thunkMiddleware,
-  typeof DEBUG !== 'undefined' && loggerMiddleware, // eslint-disable-line no-undef
+  DEBUG !== 'undefined' && loggerMiddleware,
+  routerMiddleware(history),
 ].filter(Boolean);
 
-const store = createStore(reducers,
-  applyMiddleware(...middleware));
-window.store = store;
+const store = createStore(reducers, applyMiddleware(...middleware));
+
+if (DEBUG) {
+  window.store = store;
+}
+
 export default store;
