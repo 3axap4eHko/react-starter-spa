@@ -11,7 +11,10 @@ const plugins = [
 if (process.env.NODE_ENV === 'production') {
     plugins.push(...[
       require('css-mqpacker')(),
-      require('cssnano')({ autoprefixer: false }),
+      require('cssnano')({
+        autoprefixer: false,
+        reduceIdents: false,
+      }),
     ]);
 }
 

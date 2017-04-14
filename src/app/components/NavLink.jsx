@@ -1,8 +1,8 @@
 /* eslint-disable */
 
-import React from 'react'
-import { Route } from 'react-router'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const NavLink = ({ to, ...rest }) => (
   <Route
@@ -20,4 +20,4 @@ const NavLink = ({ to, ...rest }) => (
   />
 );
 
-export default NavLink
+export default NavLink;
