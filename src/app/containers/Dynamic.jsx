@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { shape, func } from 'prop-types';
+import { func } from 'prop-types';
 
 class Dynamic extends Component {
   static propTypes = {
-    render: shape({
-      then: func.isRequired,
-      catch: func.isRequired,
-    }).isRequired,
+    render: func.isRequired,
+    loader: func,
+  };
+
+  static defaultProps = {
+    loader: null,
   };
 
   state = {
@@ -16,13 +18,21 @@ class Dynamic extends Component {
 
   componentWillMount() {
     const { render } = this.props;
-    render.then(module => this.setState({ AsyncComponent: module.default, loaded: true }));
+    let AsyncComponent;
+    render().then(module =>
+      (AsyncComponent = module.default || module) &&
+      this.setState({ AsyncComponent, loaded: true }),
+    );
   }
 
   render() {
     const { AsyncComponent } = this.state;
     if (AsyncComponent) {
       return <AsyncComponent />;
+    }
+    const { loader: Loader } = this.props;
+    if (Loader) {
+      return <Loader />;
     }
     return null;
   }
