@@ -1,20 +1,19 @@
 {__warning_header}
-import { is } from 'immutable';
-import { routerReducer as router } from 'react-router-redux';
 <%
-  const reducers = {};
-  eachEntity(entities, entity => reducers[entity.namespace] = relative(config.reducersPath, entity.reducerPath) );
+    const reducers = {};
+    eachEntity(entities, entity => reducers[entity.namespace] = relative(config.reducersPath, entity.reducerPath) );
 
-  const importReducers = Object.keys(reducers).map( namespace => `import ${namespace} from './${noExt(reducers[namespace])}';` ).join('\n');
-  const mappedReducers = Object.keys(reducers).join(',\n  ');
-  const statePath      = relative(config.reducersPath, config.statesPath);
+    const importReducers = Object.keys(reducers).map( namespace => `import ${namespace} from './${noExt(reducers[namespace])}';` ).join('\n');
+    const mappedReducers = Object.keys(reducers).join(',\n  ');
+    const statePath      = relative(config.reducersPath, config.statesPath);
 %>
 {importReducers}
+import { routerReducer as router } from 'react-router-redux';
 import defaultState from './{statePath}';
 
 const namespaceReducersMap = {
-  {mappedReducers},
   router,
+  {mappedReducers},
 };
 
 export default function (state = defaultState, action) {
@@ -25,7 +24,7 @@ export default function (state = defaultState, action) {
     if (typeof nextNamespaceState === 'undefined') {
       throw new Error(`State from reducer '${<%  %>namespace}' cannot be undefined`);
     }
-    if (!is(prevNamespaceState, nextNamespaceState)) {
+    if (prevNamespaceState !== nextNamespaceState) {
       return { ...state, [namespace]: nextNamespaceState };
     }
   }

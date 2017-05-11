@@ -1,18 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import Image from './LoaderAnimation.svg';
 
-const Loading = styled.div`
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  justify-content: center;
-`;
+import './Loader.css';
 
 export default function Loader() {
   return (
-    <Loading>
+    <div className="c-loader">
       <img src={Image} alt="Loading..." />
-    </Loading>
+    </div>
   );
 }
