@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
-import { object } from 'prop-types';
+import { string } from 'prop-types';
 import withStyles from 'react-jss';
-import Image from './LoaderAnimation.svg';
 
 const styles = () => ({
   root: {
     display: 'flex',
-    flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
+    flex: 1,
+  },
+  heading: {
+    textAlign: 'center',
   },
 });
 
 @withStyles(styles)
-export default class Loader extends Component {
+export default class Page extends Component {
   static propTypes = {
-    classes: object,
+    title: string.isRequired,
   };
+
   render() {
-    const { classes } = this.props;
+    const { classes, title, children } = this.props;
     return (
       <div className={classes.root}>
-        <img src={Image} alt="Loading..." />
+        <h1 className={classes.heading}>{title}</h1>
+        {children}
       </div>
     );
   }

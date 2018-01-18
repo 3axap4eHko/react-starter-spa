@@ -8,11 +8,9 @@
     const statePath      = relative(config.reducersPath, config.statesPath);
 %>
 {importReducers}
-import { routerReducer as router } from 'react-router-redux';
 import defaultState from './{statePath}';
 
 const namespaceReducersMap = {
-  router,
   {mappedReducers},
 };
 

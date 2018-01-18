@@ -4,12 +4,12 @@
 
 ## Features
  - React JS 15
- - React Router 4
+ - React Steersman
  - React Hot Loader 3
  - Redux 3
  - Offline plugin
- - Webpack 2
- - PostCSS (CSS Next, PreCSS)
+ - Webpack 3
+ - React JSS
  - Test coverage
  - Karma / Mocha tests
 

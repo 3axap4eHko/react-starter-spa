@@ -17,7 +17,7 @@ export default function (state, action) {
     case STATUS_SUCCESS:
       return action.result;
     case STATUS_FAILURE:
-      console.error(action.error);
+      console.error(action.error); // eslint-disable-line no-console
       return state;
     default:
       return state;

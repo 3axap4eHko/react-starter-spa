@@ -1,7 +1,5 @@
 const Path = require('path');
 const { DefinePlugin } = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ExtractPostCss = new ExtractTextPlugin('css/[name].css');
 const Html = require('html-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const WebpackPlugin = require('./webpack.plugin');
@@ -15,8 +13,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: 'pre' },
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader', options: { cacheDirectory: 'cache' } },
-      { test: /\.css$/, loader: ExtractPostCss.extract({ use: ['css-loader', 'postcss-loader'], publicPath: '/' }) },
+      { test: /\.js[sx]?$/, exclude: /node_modules/, loader: 'babel-loader', options: { cacheDirectory: 'cache' } },
       { test: /\.(svg|jpg|png|gif)$/, loader: 'file-loader', options: { name: 'images/[name].[ext]' } },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -27,7 +24,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.jss']
   },
   plugins: [
     new WebpackPlugin({
@@ -39,7 +36,6 @@ module.exports = {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    ExtractPostCss,
     new Html({
       filename: 'index.html',
       template: 'src/index.html'

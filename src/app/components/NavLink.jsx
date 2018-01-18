@@ -1,23 +1,58 @@
-/* eslint-disable */
+import React, { Component } from 'react';
+import { object } from 'prop-types';
+import withStyles from 'react-jss';
+import classNames from 'classnames';
+import { Match } from 'react-steersman';
 
-import React from 'react';
-import { Route } from 'react-router';
-import { Link } from 'react-router-dom';
+const styles = theme => ({
+  root: {},
+  link: {
+    color: theme.color,
+  },
+});
 
-const NavLink = ({ to, ...rest }) => (
-  <Route
-    path={typeof to === 'object' ? to.pathname : to}
-    exact={true}
-    strict={false}
-    children={({ location, match }) => (
-      <li className={match && 'active'}>
-        <Link
-          to={to}
-          {...rest}
-        />
-      </li>
-    )}
-  />
-);
+@withStyles(styles)
+export default class Link extends Component {
+  static contextTypes = {
+    history: object,
+  };
 
-export default NavLink;
+  onClick = (event) => {
+    event.preventDefault();
+    const { history } = this.context;
+    if (history.location.pathname !== this.props.to) {
+      history.push(this.props.to);
+    }
+  };
+
+  render() {
+    const {
+      classes,
+      to,
+      exact,
+      strict,
+      children,
+      ...rest
+    } = this.props;
+
+    return (
+      <Match
+        path={to}
+        exact={exact}
+        strict={strict}
+        children={({ match }) => (
+          <li className={classNames(classes.root, { active: !!match })}>
+            <a
+              {...rest}
+              href={to}
+              onClick={this.onClick}
+              className={classNames(classes.link)}
+            >
+              {children}
+            </a>
+          </li>
+        )}
+      />
+    );
+  }
+}

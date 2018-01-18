@@ -1,32 +1,25 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route } from 'react-steersman';
+import withStyles from 'react-jss';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-
-import '../css/global.css';
-import './App.css';
-
 import Home from './Home';
 import About from './About';
 
-function App() {
-  return (
-    <div className="site-wrapper-inner">
-      <div className="cover-container">
+import styleApp from './App.jss';
+
+@withStyles(styleApp)
+export default class App extends Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
         <Nav />
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
+        <Route path="/" children={Home} />
+        <Route path="/about" children={About} />
         <Footer />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-function mapStateToProps() {
-  return {};
-}
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);

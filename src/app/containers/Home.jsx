@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
+import withStyles from 'react-jss';
 import Cargo from './Cargo.svg';
 import Dynamic from './Dynamic';
+import Page from '../components/Page';
 import Loader from '../components/Loader';
 
-function Home() {
-  return (
-    <div className="inner cover">
-      <h1 className="cover-heading">Create your application faster.</h1>
-      <img src={Cargo} alt="React Starter SPA" />
-      <Dynamic render={() => import('./Test').then(m => new Promise(r => setTimeout(r, 1000, m)))} loader={Loader} />
-    </div>
-  );
-}
+const styles = () => ({
+  root: {},
+  dynamic: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
-export default Home;
+@withStyles(styles)
+export default class Home extends Component {
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <Page title="Create your application faster.">
+        <img src={Cargo} alt="React Starter SPA" />
+        <div className={classes.dynamic}>
+          <Dynamic
+            render={async () => {
+              const component = await import('./Test');
+              return new Promise(r => setTimeout(r, 1000, component));
+            }}
+            loader={Loader}
+          />
+        </div>
+      </Page>
+    );
+  }
+}

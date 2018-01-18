@@ -7,12 +7,12 @@ import {
   // Namespaces
   NAMESPACE_APP,
   // Types
+  APP_CHANGE_VALUE,
   APP_LOAD,
-  APP_RESET,
 } from './../types';
 
+import appChangeValueAction from './app/change-value';
 import appLoadAction from './app/load';
-import appResetAction from './app/reset';
 
 function _createProcess(namespace, type, ...args) { // eslint-disable-line no-underscore-dangle
   return {
@@ -50,15 +50,15 @@ function _createAction(namespace, type, action) { // eslint-disable-line no-unde
 }
 
 
+export const appChangeValue = _createAction(
+  NAMESPACE_APP,
+  APP_CHANGE_VALUE,
+  appChangeValueAction,
+);
+
 export const appLoad = _createAction(
   NAMESPACE_APP,
   APP_LOAD,
   appLoadAction,
-);
-
-export const appReset = _createAction(
-  NAMESPACE_APP,
-  APP_RESET,
-  appResetAction,
 );
 

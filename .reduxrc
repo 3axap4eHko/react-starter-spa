@@ -1,18 +1,14 @@
 {
-    "useCamelCasedPaths": false,
-
-    "actionsPath": "./src/app/redux/actions",
-    "actionTemplatePath": "./src/app/redux/templates/action.jst",
-    "actionsIndexTemplatePath": "./src/app/redux/templates/action-index.jst",
-
-    "reducersPath": "./src/app/redux/reducers",
-    "reducerTemplatePath": "./src/app/redux/templates/reducer.jst",
-    "reducersIndexTemplatePath": "./src/app/redux/templates/reducer-index.jst",
-
-    "typesPath": "./src/app/redux/types",
-    "typesTemplatePath": "./src/app/redux/templates/types.jst",
-
-    "statesPath": "./src/app/redux/states",
-    "stateTemplatePath": "./src/app/redux/templates/state.jst",
-    "statesIndexTemplatePath": "./src/app/redux/templates/state-index.jst"
+  "useCamelCasedPaths": false,
+  "actionsPath": "src/app/redux/actions",
+  "reducersPath": "src/app/redux/reducers",
+  "typesPath": "src/app/redux/types",
+  "statesPath": "src/app/redux/states",
+  "actionTemplatePath": "src/app/redux/templates/action.jst",
+  "actionsIndexTemplatePath": "src/app/redux/templates/action-index.jst",
+  "reducerTemplatePath": "src/app/redux/templates/reducer.jst",
+  "reducersIndexTemplatePath": "src/app/redux/templates/reducer-index.jst",
+  "typesTemplatePath": "src/app/redux/templates/types.jst",
+  "stateTemplatePath": "src/app/redux/templates/state.jst",
+  "statesIndexTemplatePath": "src/app/redux/templates/state-index.jst"
 }

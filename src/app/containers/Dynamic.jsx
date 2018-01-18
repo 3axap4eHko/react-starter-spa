@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func } from 'prop-types';
 
-class Dynamic extends Component {
+export default class Dynamic extends Component {
   static propTypes = {
     render: func.isRequired,
     loader: func,
@@ -13,16 +13,19 @@ class Dynamic extends Component {
 
   state = {
     AsyncComponent: null,
-    loaded: false,
   };
 
-  componentWillMount() {
+  async componentWillMount() {
     const { render } = this.props;
-    let AsyncComponent;
-    render().then(module =>
-      (AsyncComponent = module.default || module) &&
-      this.setState({ AsyncComponent, loaded: true }),
-    );
+    const module = await render();
+    const AsyncComponent = module.default || module;
+    if (!this.unmounted) {
+      this.setState({ AsyncComponent });
+    }
+  }
+
+  componentWillUnmount() {
+    this.unmounted = true;
   }
 
   render() {
@@ -37,5 +40,3 @@ class Dynamic extends Component {
     return null;
   }
 }
-
-export default Dynamic;
