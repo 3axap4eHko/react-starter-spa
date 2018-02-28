@@ -9,7 +9,7 @@ const baseConfig = require('./base.config');
 
 module.exports = webpackMerge(baseConfig, {
   entry: {
-    'index': Path.resolve(__dirname, '../src/app/index.jsx'),
+    'index': Path.resolve(__dirname, '../src/app/index.js'),
     'common': [
       'react',
       'react-dom',

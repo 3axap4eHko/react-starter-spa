@@ -16,7 +16,7 @@ module.exports = webpackMerge(baseConfig, {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:9090',
     'webpack/hot/only-dev-server',
-    Path.resolve(__dirname, '../src/app/dev.jsx'),
+    Path.resolve(__dirname, '../src/app/dev.js'),
   ],
   plugins: [
     new HotModuleReplacementPlugin(),

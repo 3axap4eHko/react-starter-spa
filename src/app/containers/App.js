@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import Home from './Home';
 import About from './About';
 
-import styleApp from './App.jss';
+import styleApp from './App.style';
 
 @withStyles(styleApp)
 export default class App extends Component {

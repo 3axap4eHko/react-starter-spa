@@ -23,9 +23,6 @@ module.exports = {
       { test: /\.ttf$|\.eot$/, loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } }
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx', '.jss']
-  },
   plugins: [
     new WebpackPlugin({
       clean: ['build', 'cache', 'coverage']
