@@ -5,21 +5,19 @@ const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 const baseConfig = require('./base.config');
 
 module.exports = webpackMerge(baseConfig, {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
+    contentBase: './build',
     hot: true,
     quiet: false,
     port: 9090,
     stats: 'errors-only'
   },
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:9090',
-    'webpack/hot/only-dev-server',
-    Path.resolve(__dirname, '../src/app/dev.js'),
-  ],
+  entry: {
+    app: Path.resolve(__dirname, '../src/app/dev.js')
+  },
   plugins: [
+    new NamedModulesPlugin(),
     new HotModuleReplacementPlugin(),
-    new NamedModulesPlugin()
   ]
 });

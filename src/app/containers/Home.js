@@ -18,10 +18,10 @@ const styles = () => ({
 @withStyles(styles)
 export default class Home extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, transitionClassName } = this.props;
 
     return (
-      <Page title="Create your application faster.">
+      <Page title="Create your application faster." className={transitionClassName}>
         <img src={Cargo} alt="React Starter SPA" />
         <div className={classes.dynamic}>
           <Dynamic

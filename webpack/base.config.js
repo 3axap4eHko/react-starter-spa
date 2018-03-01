@@ -2,7 +2,7 @@ const Path = require('path');
 const { DefinePlugin } = require('webpack');
 const Html = require('html-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
-const WebpackPlugin = require('./webpack.plugin');
+const Clean = require('clean-webpack-plugin');
 
 module.exports = {
   output: {
@@ -12,8 +12,8 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: 'pre' },
-      { test: /\.js[sx]?$/, exclude: /node_modules/, loader: 'babel-loader', options: { cacheDirectory: 'cache' } },
+      //{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: 'pre' },
+      { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader', options: { cacheDirectory: 'cache' } },
       { test: /\.(svg|jpg|png|gif)$/, loader: 'file-loader', options: { name: 'images/[name].[ext]' } },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -24,9 +24,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new WebpackPlugin({
-      clean: ['build', 'cache', 'coverage']
-    }),
+    new Clean(['../build', '../cache', '../coverage']),
     new DefinePlugin({
       'DEBUG': JSON.stringify(!!process.env.DEBUG),
       'process.env': {
