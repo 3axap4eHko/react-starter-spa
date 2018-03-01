@@ -3,12 +3,12 @@
 [![build status](https://travis-ci.org/3axap4eHko/react-starter-spa.svg?branch=master)](https://travis-ci.org/3axap4eHko/react-starter-spa)
 
 ## Features
- - React JS 15
+ - React JS 16.2
  - React Steersman
- - React Hot Loader 3
+ - React Hot Loader 4
  - Redux 3
  - Offline plugin
- - Webpack 3
+ - Webpack 4
  - React JSS
  - Test coverage
  - Karma / Mocha tests
