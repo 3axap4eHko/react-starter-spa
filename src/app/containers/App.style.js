@@ -21,7 +21,7 @@ export default theme => ({
       color: theme.color,
     },
     '.page-animation': {
-      transition: 'all 1000ms ease-in-out',
+      transition: 'all 375ms ease-in-out',
       width: '100%',
     },
     '.page-enter-start': {

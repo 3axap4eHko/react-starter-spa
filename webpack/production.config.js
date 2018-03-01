@@ -1,37 +1,21 @@
 const webpackMerge = require('webpack-merge');
 const Path = require('path');
-const { optimize, HashedModuleIdsPlugin } = require('webpack');
-const MinifyPlugin = require('babel-minify-webpack-plugin');
-const Visualizer = require('webpack-visualizer-plugin');
+const { HashedModuleIdsPlugin } = require('webpack');
 const Offline = require('offline-plugin');
 
 const baseConfig = require('./base.config');
 
 module.exports = webpackMerge(baseConfig, {
+  mode: 'production',
   entry: {
     'index': Path.resolve(__dirname, '../src/app/index.js'),
-    'common': [
-      'react',
-      'react-dom',
-      'react-steersman',
-      'redux',
-      'react-redux',
-      'redux-thunk',
-    ],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   plugins: [
-    new optimize.CommonsChunkPlugin({
-      name: 'common',
-      filename: 'js/common.js',
-    }),
-    new MinifyPlugin(),
-    new Offline({
-      externals: ['/'],
-      ServiceWorker: {
-        output: 'js/sw.js',
-      },
-    }),
     new HashedModuleIdsPlugin(),
-    new Visualizer(),
   ],
 });

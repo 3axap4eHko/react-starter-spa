@@ -1,58 +1,35 @@
-import React, { Component } from 'react';
-import { object } from 'prop-types';
+import React from 'react';
 import withStyles from 'react-jss';
 import classNames from 'classnames';
-import { Match } from 'react-steersman';
+import createLink from 'react-steersman/createLink';
 
 const styles = theme => ({
-  root: {},
+  root: {
+    padding: 20,
+  },
+  activeRoot: {
+    backgroundColor: theme.accentColor,
+  },
   link: {
     color: theme.color,
   },
+  activeLink: {},
 });
 
-@withStyles(styles)
-export default class Link extends Component {
-  static contextTypes = {
-    history: object,
-  };
+const NavLink = createLink(({ to, title, classes, navigate, match }) => (
+  <li className={classNames(classes.root, { [classes.activeRoot]: match })}>
+    <a
+      href={to}
+      className={classNames(classes.link, { [classes.activeLink]: match })}
+      title={title}
+      onClick={(e) => {
+        e.preventDefault();
+        navigate(to);
+      }}
+    >
+      {title}
+    </a>
+  </li>
+));
 
-  onClick = (event) => {
-    event.preventDefault();
-    const { history } = this.context;
-    if (history.location.pathname !== this.props.to) {
-      history.push(this.props.to);
-    }
-  };
-
-  render() {
-    const {
-      classes,
-      to,
-      exact,
-      strict,
-      children,
-      ...rest
-    } = this.props;
-
-    return (
-      <Match
-        path={to}
-        exact={exact}
-        strict={strict}
-        children={({ match }) => (
-          <li className={classNames(classes.root, { active: !!match })}>
-            <a
-              {...rest}
-              href={to}
-              onClick={this.onClick}
-              className={classNames(classes.link)}
-            >
-              {children}
-            </a>
-          </li>
-        )}
-      />
-    );
-  }
-}
+export default withStyles(styles)(NavLink);

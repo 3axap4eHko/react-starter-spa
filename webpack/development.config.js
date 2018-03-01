@@ -5,6 +5,7 @@ const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 const baseConfig = require('./base.config');
 
 module.exports = webpackMerge(baseConfig, {
+  mode: 'development',
   devtool: 'source-map',
   devServer: {
     contentBase: './build',

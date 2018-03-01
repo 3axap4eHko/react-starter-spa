@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation Link with active styles 1`] = `
+<li
+  className="Link-root-0-1-1 Link-activeRoot-0-1-2"
+>
+  <a
+    className="Link-link-0-1-3 Link-activeLink-0-1-4"
+    href="/"
+    onClick={[Function]}
+    title="Home"
+  >
+    Home
+  </a>
+</li>
+`;
+
+exports[`Navigation Link with styles 1`] = `
+<li
+  className="Link-root-0-1-1"
+>
+  <a
+    className="Link-link-0-1-3"
+    href="/"
+    onClick={[Function]}
+    title="Home"
+  >
+    Home
+  </a>
+</li>
+`;

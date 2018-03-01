@@ -4,9 +4,10 @@ import NavLink from './NavLink';
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.primaryColor,
     display: 'flex',
+    alignItems: 'center',
     padding: '0 10px',
+    backgroundColor: theme.primaryColor,
   },
   title: {},
   nav: {
@@ -33,8 +34,8 @@ export default class Nav extends Component {
         <h3 className={classes.title}>React Redux Starter SPA</h3>
         <nav className={classes.nav}>
           <ul className={classes.list}>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/" title="Home" />
+            <NavLink to="/about" title="About" />
           </ul>
         </nav>
       </div>

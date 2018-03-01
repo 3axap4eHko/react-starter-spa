@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RouteGroup } from 'react-steersman';
+import RouteGroup from 'react-steersman/RouteGroup';
 import withStyles from 'react-jss';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
