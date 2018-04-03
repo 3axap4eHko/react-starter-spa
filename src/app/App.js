@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RouteGroup from 'react-steersman/RouteGroup';
+import Route from 'react-steersman/Route';
 import withStyles from 'react-jss';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -17,9 +17,9 @@ export default class App extends Component {
       <div className={classes.root}>
         <Nav />
         <div className={classes.content}>
-          <RouteGroup path="/" children={Home} />
-          <RouteGroup path="/about" children={About} />
-          <RouteGroup path=".*" children={NotFound} />
+          <Route path="/" children={Home} group="main" />
+          <Route path="/about" children={About} group="main" />
+          <Route path=".*" children={NotFound} group="main" />
         </div>
         <Footer />
       </div>

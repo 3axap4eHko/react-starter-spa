@@ -31,7 +31,8 @@ export default class Dynamic extends Component {
   render() {
     const { AsyncComponent } = this.state;
     if (AsyncComponent) {
-      return <AsyncComponent />;
+      const { props } = this.props;
+      return <AsyncComponent {...props} />;
     }
     const { loader: Loader } = this.props;
     if (Loader) {

@@ -8,10 +8,17 @@ import Loader from '../components/Loader';
 const styles = () => ({
   root: {},
   dynamic: {
+    margin: 20,
     display: 'flex',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  counter: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 120,
   },
 });
 
@@ -30,6 +37,9 @@ export default class Home extends Component {
               return new Promise(r => setTimeout(r, 1000, component));
             }}
             loader={Loader}
+            props={{
+              className: classes.counter,
+            }}
           />
         </div>
       </Page>
