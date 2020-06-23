@@ -1,17 +1,13 @@
-# React Redux Starter SPA
+# React Starter SPA
 
 [![build status](https://travis-ci.org/3axap4eHko/react-starter-spa.svg?branch=master)](https://travis-ci.org/3axap4eHko/react-starter-spa)
 
 ## Features
- - React JS 16.2
- - React Steersman
- - React Hot Loader 4
- - Redux 3
+ - React JS
+ - React Router
  - Offline plugin
  - Webpack 4
  - React JSS
- - Test coverage
- - Karma / Mocha tests
 
 ## Installation
 
@@ -23,22 +19,16 @@ npm install
 ## Development
 
 ``` bash
-npm run dev
+yarn start
 ```
 and open [http://localhost:9090/](http://localhost:9090/)
 see `src` directory
 
 ## Building
 ``` bash
-npm run build
+yarn build
 ```
 see `build` directory
-
-## Testing
-``` bash
-npm run test
-```
-see `spec` directory
 
 ## License
 
