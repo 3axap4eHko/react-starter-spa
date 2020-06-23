@@ -1,37 +1,33 @@
 {
-  "extends": [
-    "airbnb"
-  ],
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "es6": true,
-    "mocha": true
-  },
-  "globals": {
-    "module": false,
-    "__DEV__": false,
-    "DEBUG": false,
-    "process": false,
-    "expect": false
-  },
-  "plugins": [
-    "react"
-  ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2020,
+    "sourceType": "module",
     "ecmaFeatures": {
-        "jsx": true
+      "jsx": true
     }
   },
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
   "rules": {
-    "object-curly-newline": 0,
-    "react/prop-types": 0,
-    "react/no-children-prop": 0,
-    "react/forbid-prop-types": 0,
-    "react/require-default-props": 0,
-    "react/jsx-filename-extension": 0,
-    "import/extensions": 0,
-    "import/no-named-as-default-member": 0
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-explicit-any": 0
+  },
+  "env": {
+    "browser": true,
+    "es6": true
   }
 }

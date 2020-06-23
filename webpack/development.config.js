@@ -1,24 +1,21 @@
-const webpackMerge = require('webpack-merge');
 const Path = require('path');
 const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 
-const baseConfig = require('./base.config');
-
-module.exports = webpackMerge(baseConfig, {
+module.exports = {
   mode: 'development',
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: './build',
     hot: true,
-    quiet: false,
+    historyApiFallback: true,
     port: 9090,
     stats: 'errors-only'
   },
   entry: {
-    app: Path.resolve(__dirname, '../src/app/dev.js')
+    app: Path.resolve(__dirname, '../src/app/index.dev.tsx')
   },
   plugins: [
     new NamedModulesPlugin(),
     new HotModuleReplacementPlugin(),
   ]
-});
+};

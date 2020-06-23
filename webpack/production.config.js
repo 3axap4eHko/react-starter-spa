@@ -1,14 +1,10 @@
-const webpackMerge = require('webpack-merge');
 const Path = require('path');
 const { HashedModuleIdsPlugin } = require('webpack');
-const Offline = require('offline-plugin');
 
-const baseConfig = require('./base.config');
-
-module.exports = webpackMerge(baseConfig, {
+module.exports = {
   mode: 'production',
   entry: {
-    'index': Path.resolve(__dirname, '../src/app/index.js'),
+    'index': Path.resolve(__dirname, '../src/app/index.tsx'),
   },
   optimization: {
     splitChunks: {
@@ -18,4 +14,4 @@ module.exports = webpackMerge(baseConfig, {
   plugins: [
     new HashedModuleIdsPlugin(),
   ],
-});
+};
