@@ -1,5 +1,0 @@
-{{=it.__info_header}}
-
-export default {
-  // Put state values here
-};

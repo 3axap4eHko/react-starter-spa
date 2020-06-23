@@ -2,7 +2,6 @@ const Path = require('path');
 const { DefinePlugin } = require('webpack');
 const Html = require('html-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
-const WebpackPlugin = require('./webpack.plugin');
 const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       //{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: 'pre' },
-      { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader', options: { cacheDirectory: 'cache' } },
+      { test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/, options: { logInfoToStdOut: true, logLevel: 'info' } },
       { test: /\.(svg|jpg|png|gif)$/, loader: 'file-loader', options: { name: 'images/[name].[ext]' } },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -24,15 +23,15 @@ module.exports = {
       { test: /\.ttf$|\.eot$/, loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } },
     ],
   },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
+  },
   performance: {
     hints: 'warning', // enum
     maxAssetSize: 200000, // int (in bytes),
     maxEntrypointSize: 400000, // int (in bytes)
   },
   plugins: [
-    new WebpackPlugin({
-      clean: ['build', 'cache', 'coverage'],
-    }),
     new DefinePlugin({
       'DEBUG': JSON.stringify(!!process.env.DEBUG),
       'process.env': {
@@ -43,9 +42,11 @@ module.exports = {
       filename: 'index.html',
       template: 'src/index.html',
     }),
-    new Copy([
-      { from: './src/favicon.ico', to: './' },
-    ]),
+    new Copy({
+      patterns: [
+        { from: './src/favicon.ico', to: './' },
+      ]
+    }),
     new Visualizer({
       filename: './statistics.html',
     }),

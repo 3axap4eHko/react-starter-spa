@@ -1,6 +1,7 @@
 .idea
-build
-cache
-coverage
-node_modules
+/build
+/cache
+/coverage
+node_modules/
+.env
 *.log*
